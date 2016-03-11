@@ -66,4 +66,5 @@ CHIP ALU {
      Or16Way(in=final,out=out1);
      Nand(a=out1,b=out1,out=zr);
    //ng
+     Ng(in=final,out=ng);
 }
