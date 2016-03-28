@@ -21,7 +21,8 @@ CHIP PC {
     Mux16(a=out1,b=false,sel=reset,out=out6);
     Inc16(in=out1,out=out2);
     Mux16(a=out1,b=out2,sel=inc,out=out7);
-    //Mux4Way(01,10,00,11)(out1,out5,out6,out7)
-    
-    Register(in=out,load=true,out=out1,out=out);
+    //Mux4Way(00,01,10,11)(out1,out5,out6,out7);
+    Sel2(a=a,b=b,c=c,out=out-sel);
+    Mux4Way16(a=out1,b=out5,c=out6,d=out7,sel=out-sel,out=out-result);
+    Register(in=out-result,load=true,out=out1,out=out);
 }

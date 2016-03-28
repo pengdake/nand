@@ -1,0 +1,14 @@
+CHIP Sel2{
+    IN a,b,c;
+    OUT out[2];
+
+    PARTS:
+    //Bool-true
+    Mux2(a=false,b=true,sel=a,out=out1);
+    //Xor(a=out1[1],b=out1[1],out=out1[1]);
+    Inc2(in=out1,out=out2);
+    Mux2(a=out1,b=out2,sel=b,out=out3);
+    Inc2(in=out3,out=out4);
+    Mux2(a=out3,b=out4,sel=c,out=out);
+    
+}

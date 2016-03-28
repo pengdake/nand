@@ -1,0 +1,10 @@
+CHIP Inc2 {
+    IN in[2];
+    OUT out[2];
+
+    PARTS:
+   // Put you code here:
+
+   FullAdder(a=in[0],b=true,c=false,sum=out[0],carry=c0);
+   FullAdder(a=in[1],b=false,c=c0,sum=out[1],carry=c1);
+}
