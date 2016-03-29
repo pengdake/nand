@@ -3,12 +3,18 @@ CHIP Sel2{
     OUT out[2];
 
     PARTS:
-    //Bool-true
-    Mux2(a=false,b=true,sel=a,out=out1);
-    //Xor(a=out1[1],b=out1[1],out=out1[1]);
-    Inc2(in=out1,out=out2);
-    Mux2(a=out1,b=out2,sel=b,out=out3);
+    //(a,b,c)(01,10,11)
+    Mux(a=false,b=true,sel=a,out=out0);
+    //Extend-2
+    Extend2(in=out0,out=out-a);
+    
+    Inc2(in=false,out=out1);
+    Inc2(in=out1,out=out-b);
+    Mux2(a=out-a,b=out-b,sel=b,out=out2);
+    
+    Inc2(in=false,out=out3);
     Inc2(in=out3,out=out4);
-    Mux2(a=out3,b=out4,sel=c,out=out);
+    Inc2(in=out4,out=out-c);
+    Mux2(a=out2,b=out-c,sel=c,out=out);
     
 }
