@@ -1,0 +1,8 @@
+CHIP Extend2{
+    IN in;
+    OUT out[2];
+    
+    PARTS:
+    Mux(a=in,b=false,sel=false,out=out[0]);
+    Xor(a=in,b=in,out=out[1]);
+}
